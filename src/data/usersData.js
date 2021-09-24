@@ -1,3 +1,4 @@
+
 export const getUsers =()=>{
     const users = JSON.parse(localStorage.getItem('users'))
     return users ? users : []
@@ -21,3 +22,4 @@ export const login = (currentUser) =>{
     const user = getUsers().find(u => u.email === currentUser.email)
     return user ? (user.password === currentUser.password ? user.id : null) : null
 }
+
