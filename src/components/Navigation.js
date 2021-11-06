@@ -4,7 +4,7 @@ import { AppContext } from '../App'
 
 const Navigation = () => {
 
-    const {currentUser, logout, getUserNameById} = useContext(AppContext)
+    const { currentUser, logout, getUserNameById } = useContext(AppContext)
     const history = useHistory()
     return (
         <nav className="navbar navbar-expand bg-primary mb-3">
@@ -26,20 +26,20 @@ const Navigation = () => {
                         </NavLink>
                     </li>
                 </ul>
-                { currentUser ? <>
-                <li className ="text-white me-3 list-unstyled">{`Hi, ${getUserNameById(+currentUser)}!`}</li>
-                <li className ="text-white list-unstyled"
-                    onClick = {()=>{
-                        logout()
-                        history.push('/')
-                    }}
-                    style = {{cursor :'pointer'}}
+                {currentUser ? <>
+                    <li className="text-white me-3 list-unstyled">{`Hi, ${getUserNameById(+currentUser)}!`}</li>
+                    <li className="text-white list-unstyled"
+                        onClick={() => {
+                            logout()
+                            history.push('/')
+                        }}
+                        style={{ cursor: 'pointer' }}
                     >Logout</li>
                 </> :
-                <>
-                <li className ="text-white me-3 list-unstyled">Hi, gast!</li>
-                <Link className = 'nav-item' to="/login">Login</Link>
-                </>
+                    <>
+                        <li className="text-white me-3 list-unstyled">Hi, gast!</li>
+                        <Link className='nav-item' to="/login">Login</Link>
+                    </>
                 }
             </div>
         </nav>

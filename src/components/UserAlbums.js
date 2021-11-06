@@ -1,10 +1,10 @@
-import { useState, useContext} from 'react'
+import { useState, useContext } from 'react'
 import { AppContext } from '../App'
 import UserAlbum from './UserAlbum'
 import UserPhotos from './UserPhotos'
 
-const UserAlbums = ()=>{
-    const {currentUser, addNewAlbum, currentUserAlbums} = useContext(AppContext)
+const UserAlbums = () => {
+    const { currentUser, addNewAlbum, currentUserAlbums } = useContext(AppContext)
 
     const [album, setAlbum] = useState({
         title: '',
@@ -12,8 +12,8 @@ const UserAlbums = ()=>{
         userId: currentUser,
     })
 
-    const changeFieldHandler = event=>{
-        setAlbum({...album, [event.target.name]: event.target.value})
+    const changeFieldHandler = event => {
+        setAlbum({ ...album, [event.target.name]: event.target.value })
     }
 
     const [currentAlbum, setCurrentAlbum] = useState(null)
@@ -23,8 +23,8 @@ const UserAlbums = ()=>{
     return (
         <div className="col-8 p-3 my-2">
             <h3 className="text-center">My albums</h3>
-            <div className ='row row-cols-1 row-cols-md-3 g-4 p-2'>
-                {userAlbums.map(album => <UserAlbum key = {album.id} album = {album} setCurrentAlbum = {setCurrentAlbum} />)}
+            <div className='row row-cols-1 row-cols-md-3 g-4 p-2'>
+                {userAlbums.map(album => <UserAlbum key={album.id} album={album} setCurrentAlbum={setCurrentAlbum} />)}
             </div>
             <button className="w-100 btn btn-success"
                 type="button"
@@ -36,9 +36,9 @@ const UserAlbums = ()=>{
                         <div className="modal-header">
                             <h5 className="modal-title" >Make your new photo album</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            onClick = {()=>{
-                                setAlbum({...album, title:'', cover:''})
-                            }}></button>
+                                onClick={() => {
+                                    setAlbum({ ...album, title: '', cover: '' })
+                                }}></button>
                         </div>
                         <div className="modal-body">
                             <input
@@ -62,21 +62,20 @@ const UserAlbums = ()=>{
                             <button type="button"
                                 className="btn btn-primary"
                                 data-bs-dismiss="modal"
-                                onClick = {()=> {
+                                onClick={() => {
                                     addNewAlbum(album)
-                                    setAlbum({...album, title:'', cover:''})
+                                    setAlbum({ ...album, title: '', cover: '' })
                                 }}
-                                >
+                            >
                                 add album</button>
                         </div>
                     </div>
                 </div>
             </div>
-          {currentAlbum && <UserPhotos currentAlbum = {currentAlbum} />}
+            {currentAlbum && <UserPhotos currentAlbum={currentAlbum} />}
         </div>
     )
 }
 
 export default UserAlbums
 
-// currentAlbum ? <Photos currentAlbum = {currentAlbum} /> : {null}

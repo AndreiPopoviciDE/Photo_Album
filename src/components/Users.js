@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { AppContext } from '../App';
 import User from './User';
-//import { useHistory } from 'react-router-dom';
+
 
 const Users = ({ history }) => {
     const { users, currentUser } = useContext(AppContext);
-    //const history = useHistory() 
+
     return (
         <div className='container'>
             <h1 className='text-center my-5'>{users.length ? 'All our users' : 'You can be first one!'}</h1>
@@ -19,7 +19,7 @@ const Users = ({ history }) => {
                         onClick={() => history.push('/registration')}>
                         Registration
                     </button>
-                </div> 
+                </div>
             </>
             }
         </div>
@@ -28,4 +28,3 @@ const Users = ({ history }) => {
 
 export default Users;
 
-//console.log(0 || true || 5 < 3 || null)
